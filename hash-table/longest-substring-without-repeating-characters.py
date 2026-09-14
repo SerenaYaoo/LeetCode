@@ -1,5 +1,8 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
+        # edge case:
+        if s == '':
+            return 0
         longest = s[0]
         max_length = 1
         current_length = 1
@@ -25,7 +28,7 @@ class Solution:
             if current_length > max_length:
                 max_length = current_length
                 longest = curr
-                
+
             curr = char
         return max_length
 
