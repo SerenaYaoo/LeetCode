@@ -4,21 +4,29 @@ class Solution:
         max_length = 1
         current_length = 1
         curr = s[0]
+        i = 1
 
-        for char in s[1:]:
-            # print(char)
-            if char not in curr:
-                curr += char
-                current_length = len(curr)
-                # print(curr)
-
-            else:
+        while i < len(s):
+            char = s[i]
+            # if consecutive 
+            if char in curr:
+                i += 1
                 curr = char
+                continue
+            
+            for j in range(i, len(s)):
+                next = s[j]
+                if next in curr:
+                    break
+                if next not in curr:
+                    curr += next
+                    current_length = len(curr)
             
             if current_length > max_length:
-                
                 max_length = current_length
                 longest = curr
+                
+            curr = char
         return max_length
 
 
