@@ -1,18 +1,30 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         char_map = {}
+        max_length = 0
         left = 0
-        max_len = 0
 
-        for right, char in enumerate(s):
-            # 如果字符出现过，且在当前窗口 [left, right] 范围之内
-            if char in char_map and char_map[char] >= left:
-                left = char_map[char]+ 1
+        for right,char in enumerate(s):
+            # if it's the first case:
+            if left == right:
+                char_map[char] = left
+                continue
             
-            char_map[char] = right # 更新当前字符的最新索引
-            max_len = max(max_len, right - left + 1)
-        return max_len
+            # if its a seen character 
+            if char in char_map and char_map[char] <= right:
+                left = char_map[char] + 1
+            
+            char_map[char] = right
+            
+            max_length = max(max_length, right - left + 1)
+        return max_length
+            
+                
 
+
+
+            
+       
 
         # edge case:
         # if s == '':
