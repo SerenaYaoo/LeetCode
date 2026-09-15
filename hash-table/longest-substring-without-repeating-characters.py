@@ -14,7 +14,7 @@ class Solution:
                 continue
             
             # if its a seen character 
-            if char in char_map and char_map[char] <= right:
+            if char in char_map and char_map[char] >= left:
                 left = char_map[char] + 1
             
             char_map[char] = right
