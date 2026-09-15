@@ -4,6 +4,9 @@ class Solution:
         max_length = 0
         left = 0
 
+        if len(s) == 1 or len(s) == 0:
+            return len(s)
+
         for right,char in enumerate(s):
             # if it's the first case:
             if left == right:
