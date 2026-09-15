@@ -4,14 +4,15 @@ class Solution:
         stack = []
 
         for char in s:
-            if char in mapping: # if its a right parenthesis
-                top_element = stack.pop() if stack else "#"
-                if mapping[char] != top_element:
+            # this char is a right parenthesis
+            if char in mapping:
+                if stack.pop() != mapping[char]:
                     return False
-                
             else:
-                # if it's a left parenthesis, add it to the stack
                 stack.append(char)
-        # only valid if the stack is empty
         return not stack
+
+            
+
+        
 
