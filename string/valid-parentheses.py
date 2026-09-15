@@ -5,7 +5,7 @@ class Solution:
 
         for char in s:
             # this char is a right parenthesis
-            if char in mapping:
+            if char in mapping and stack:
                 if stack.pop() != mapping[char]:
                     return False
             else:
