@@ -1,11 +1,21 @@
 from collections import defaultdict
-from typing import List
-class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        result = defaultdict(list)
+
+class Solution(object):
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        seen = defaultdict(list)
+        result = []
 
         for item in strs:
-            key = ''.join(sorted(item))
-            result[key].append(item)
-            
-        return list(result.values())
+            curr = ''.join(sorted(item))
+            if curr in seen:
+                seen[curr].append(item)
+            else:
+                seen[curr] = [item]
+        return list(seen.values())
+        
+
+        
